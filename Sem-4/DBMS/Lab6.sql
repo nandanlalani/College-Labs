@@ -123,7 +123,6 @@ while @@FETCH_STATUS = 0
 	begin
 		update Products
 		set Price = @pri+(0.1*@pri) where Product_id = @pid;
-
 		print cast(@pid as varchar) + ' ' + @pname + ' ' + cast(@pri as varchar);
 
 		fetch next from Product_Cursor into @pid,@pname,@pri
@@ -148,7 +147,6 @@ fetch next from Product_Cursor into @pid,@pname,@pri
 while @@FETCH_STATUS = 0
 	begin
 		update Products set Price = ROUND(@pri,1) where Product_id = @pid
-
 		print cast(@pid as varchar) + ' ' + @pname + ' ' + cast(@pri as varchar);
 
 		fetch next from Product_Cursor into @pid,@pname,@pri
