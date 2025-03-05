@@ -25,11 +25,21 @@ Future<User> getUserById(String id) async{
 Future<void> deleteUserById(String id) async{
   var res = await http.delete(Uri.parse("$baseURL/$id"));
   print(res.body);
+  print('Delete: ${res.statusCode}');
 }
 
 Future<void> insertUser(User user) async{
   var res = await http.post(Uri.parse(baseURL),
-  body: user.toMap()
+      body: user.toMap()
   );
   print(res.body);
+  print('Insert: ${res.statusCode}');
+}
+
+Future<void> updateUser(User user) async{
+  var res = await http.put(Uri.parse('$baseURL/${user.id}'),
+      body: user.toMap()
+  );
+  print(res.body);
+  print('Edit: ${res.statusCode}');
 }
